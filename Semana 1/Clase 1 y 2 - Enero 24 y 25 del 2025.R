@@ -170,12 +170,22 @@ if(x<0){
 }else{
   print('x es un numero Positivo o Cero')
 }
+#Aca no usamos print porque no es compatible
 x<-3
 ifelse(x<0,
-       print('x es un numero negativo'),
-       print('x es un numero Positivo o Cero'))
+       ('x es un numero negativo'),
+       ('x es un numero Positivo o Cero'))
 
-
+#ejemplo 17----
+if(x<0){
+  print('x es un numero negativo')
+}else if(x==0){
+  print('x es cero')
+}else{
+  print('x es un numero postivo')
+}
+  
+  
 
 
 
