@@ -155,13 +155,25 @@ my_list[[1]]
 my_list[[2]]
 my_list[[3]]
 
+#ejemplo 15----
+#ejecuta siempre y cuando se cumpla la condicion.
+x<- -3
+if(x<0){
+  print('x es un numero negativo')
+}
 
+#ejemplo 16----
 
-
-
-
-
-
+x<- 3
+if(x<0){
+  print('x es un numero negativo')
+}else{
+  print('x es un numero Positivo o Cero')
+}
+x<-3
+ifelse(x<0,
+       print('x es un numero negativo'),
+       print('x es un numero Positivo o Cero'))
 
 
 
