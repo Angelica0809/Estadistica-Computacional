@@ -1,2 +1,2 @@
 # Estadistica Computacional
- Maestria Asignatura
+ Asignatura de Maestria en en Estadistica Aplicada 
