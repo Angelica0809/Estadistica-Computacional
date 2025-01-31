@@ -156,8 +156,8 @@ df$vs<-factor(df$vs)
 df$am<-factor(df$am)
 summary(df)
 
-head(df)#primeras 5 filas
-tail(df)#Ultimas 5 filas
+head(df)#primeras 6 filas
+tail(df)#Ultimas 6  filas
 str(df) #Resumen de mis filas
 #debo extraer los cilindrajes que son menores o iguales a 5
 df[df$cyl<=5,]#me indica que me va a dar un vector logico.
