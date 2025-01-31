@@ -1,5 +1,13 @@
 library(tidyverse)
 4+4
+#Ejemplo de Operaciones Basicas
+2+2
+5*4
+(5+5)/2
+28%%6#esto esalgo llamado modulo pero no se a que se refiere
+5^2#La potencia la hago Alt Gr + ^
+y=5
+exp(y)
 #Ejemplo a----
 a=3
 4->b
@@ -8,18 +16,29 @@ b<-6
 A<-5
 #Clase 1- 24 de enero del 2025
 #ejemplo 1 ----
+# Parte A. Calcula la suma de los valores absolutos redondeados 
+#de los errores de formacion
 errores<-c(1.9,-2.6,4.0,-9.5,-3.4,7.3)
 sum(abs(round(errores)))
+#Parte B. 
 vec1<-c(1.5,2.5,8.4,3.7,6.3)
 vec2<-rev(vec1)
 mean(x=c(abs(vec1),abs(vec2)),trim=0.2)
+
 #ejemplo 2 ----
+#Aqui lo unico que se hizo fue convertir cada conjunto de datos 
+#asociado a cada variable como vector.
 poker_vector<-c(140,-50,20,-120,240)
 roulette_vector<-c(-24,-50,100,-350,10)
 days_vector<-c('Monday','Tuesday','Wednesday','Thursday','Friday')
+
 #ejemplo 3----
-poker_wednesday<-poker_vecto[3]
-poker_midweek<-poker_vecto[c(2,3,4)]
+##extraccion de un determinado elemento del vector
+##Extraccion de la ganancia del miercoles y guardarla en una variable. 
+poker_wednesday<-poker_vector[3]
+#resultados de poker del martes, miercoles y jueves
+poker_midweek<-poker_vector[c(2,3,4)]
+#os resultados de la ruleta desde el martes hasta el viernes
 roulette_select_vector<-roulette_vector[2:5]
 
 #ejemplo 4----
@@ -30,7 +49,7 @@ order(x)#Ordeno de mayor a menor las posiciones
 rev(x[order(x)])
 x[c(2.1,3.4)]
 
-
+#ejemplo 5----
 x[-1]
 x[-c(1,3)]
 
@@ -77,7 +96,7 @@ n<-length(vecA)
 'a'<='b'
 'Hello'>'Goodbye'
 TRUE < FALSE
-5+3==8 | 5==8/2
+5+3==8 | 4==8/2
 #¿Que dıas has ganado dinero con el poker? Seleccionelos
 poker_vector>0
 poker_vector[poker_vector>0]
