@@ -685,7 +685,7 @@ print(control)</code></pre>
 ## 20     32      51    Trebol   pepino Ecoticid-K9
 ## 21      3       7    Trebol   pepino Ecoticid-K9</code></pre>
 <p><strong>E) De los datos del ítem anterior, según cada fungicida,
-¿cuntas semillas germinaron?:</strong></p>
+¿cuantas semillas germinaron?:</strong></p>
 <pre class="r"><code>Conteo_Semillas=control %&gt;%
   group_by(fungicida) %&gt;%
   summarise(semillas_germinadas= sum(conteo, na.rm = TRUE)) %&gt;%
@@ -696,6 +696,12 @@ print(Conteo_Semillas)</code></pre>
 ##   &lt;chr&gt;                     &lt;int&gt;
 ## 1 Ecoticid-K0                 300
 ## 2 Ecoticid-K9                 124</code></pre>
+<p>La tabla muestra el número total de semillas germinadas según el tipo
+de fungicida utilizado. Se observa que Ecoticid-K0 tuvo la mayor
+cantidad de semillas germinadas (300), mientras que Ecoticid-K9 presentó
+un menor número (124). Esto sugiere que Ecoticid-K0 podría ser más
+efectivo en favorecer la germinación de semillas o que las condiciones
+en las que se aplicó posiblemente fueron más favorables.</p>
 
 
 
