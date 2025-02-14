@@ -1,7 +1,7 @@
 
 ##Parcial 1. Estadistica Computacional. 
 ##Angelica Sierra
-##http:https://rpubs.com/aecerpa/1271996
+##http:https://rpubs.com/aecerpa/1272099
 
 #EJERCICIO 1--------------------------------------------------------------------
 #Genere un vector aleatorio de distribucion de Poisson, 
@@ -44,7 +44,8 @@ View(trees)
 
 ##(B)Proporcione una descripcion breve de las variables de cada conjunto--------
 
-#Revisar por favor el siguiente link:http://rpubs.com/aecerpa/1271996
+#Revisar por favor el siguiente link :https://rpubs.com/aecerpa/1272099
+#Aca entrara la solucion a este inciso. 
 
 ##(C) Realice una caracterizacion de la variable Volumen------------------------
 #segun Height (convertida en categorıas por cuantiles)en trees. 
@@ -101,8 +102,10 @@ print(paste("El total de extracciones fue:",extraccion))
 
 #EJERCICIO 5--------------------------------------------------------------------
 ##Solo nos especifican el valor de Beta, asumiremos el valor de Alpha como 1.
+
+set.seed(2025)
 RIC=function(){
-  x=rbeta(40,shape1 = 1, shape2 = 5)
+  x=rbeta(40,shape1 = 0.5, shape2 = 5)
   sort(x)
   Q1=x[round(0.25*length(x))]
   Q3=x[round(0.75*length(x))]
