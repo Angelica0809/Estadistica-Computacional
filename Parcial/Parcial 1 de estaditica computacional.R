@@ -1,7 +1,7 @@
 
 ##Parcial 1. Estadistica Computacional. 
 ##Angelica Sierra
-##http://rpubs.com/aecerpa/1271996
+##http:https://rpubs.com/aecerpa/1271996
 
 #EJERCICIO 1--------------------------------------------------------------------
 #Genere un vector aleatorio de distribucion de Poisson, 
@@ -29,7 +29,6 @@ Vector_Ordenado[c(Vector_Ordenado>3,Vector_Ordenado<8)]
 #Un cliente busca informacion sobre conjuntos de datos relacionados con 
 #experimentos quımicos. Recuerda que sus nombres son: esoph y trees
 #El cliente necesita que usted realice lo siguiente:
-
 ##(A) Indique en que paquete se encuentran estos conjuntos----------------------
 #se encuentran en el paquete datasets, el cual esta incluido por defecto en R
 
