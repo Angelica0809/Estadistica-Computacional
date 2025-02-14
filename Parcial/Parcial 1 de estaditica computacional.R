@@ -23,7 +23,7 @@ Valores_Pos_Imp=Vector_Ordenado[seq(1, length(Vector_Ordenado), by = 2)]
 print(Valores_Pos_Imp)
 
 ##(D) Extraiga los valores que son mayores que 3, pero menores que 8.----------
-Vector_Ordenado[c(Vector_Ordenado>3,Vector_Ordenado<8)]
+Vector_Ordenado[c(Vector_Ordenado>3&Vector_Ordenado<8)]
 
 #EJERCICIO 2--------------------------------------------------------------------
 #Un cliente busca informacion sobre conjuntos de datos relacionados con 
