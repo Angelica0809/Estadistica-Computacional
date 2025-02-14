@@ -1,3 +1,8 @@
+
+##Parcial 1. Estadistica Computacional. 
+##Angelica Sierra
+##http://rpubs.com/aecerpa/1271996
+
 #EJERCICIO 1--------------------------------------------------------------------
 #Genere un vector aleatorio de distribucion de Poisson, 
 #con numero de observaciones 40, y promedio de 8. Use set.seed(2025)
@@ -40,7 +45,7 @@ View(trees)
 
 ##(B)Proporcione una descripcion breve de las variables de cada conjunto--------
 
-#Ya
+#Revisar por favor el siguiente link:http://rpubs.com/aecerpa/1271996
 
 ##(C) Realice una caracterizacion de la variable Volumen------------------------
 #segun Height (convertida en categorıas por cuantiles)en trees. 
@@ -98,7 +103,7 @@ print(paste("El total de extracciones fue:",extraccion))
 #EJERCICIO 5--------------------------------------------------------------------
 ##Solo nos especifican el valor de Beta, asumiremos el valor de Alpha como 1.
 RIC=function(){
-  x=rbeta(40,1,5)
+  x=rbeta(40,shape1 = 1, shape2 = 5)
   sort(x)
   Q1=x[round(0.25*length(x))]
   Q3=x[round(0.75*length(x))]
@@ -132,16 +137,6 @@ head(datos_obs,5)
 
 ##Tabla de  control de los fungicidas relevantes----
 
-
-orobanche=c("a70", "a71", "a72", "Hiedra", "a74", "Trebol", "a76")
-fungicida=c("Ecoticid-K1", "Ecoticid-K2", "Ecoticid-K3", "Ecoticid-K0","Ecoticid-K4", "Ecoticid-K9", "Ecoticid-K8")
-tratamiento=data.frame(orobanche, fungicida, stringsAsFactors = FALSE)
-control=datos %>%
-  left_join(tratamiento, by = "orobanche")
-print(control)
-
-##PRUEBA 2
-
 orobanche=c("a70", "a71", "a72", "Hiedra", "a74", "Trebol", "a76")
 fungicida=c("Ecoticid-K1", "Ecoticid-K2", "Ecoticid-K3", "Ecoticid-K0", "Ecoticid-K4", "Ecoticid-K9", "Ecoticid-K8")
 tratamiento=data.frame(orobanche, fungicida, stringsAsFactors = FALSE)
@@ -151,6 +146,7 @@ if ("fungicida" %in% names(datos)) {
 control=datos %>%
   left_join(tratamiento, by = "orobanche")
 print(control)
+
 ##¿cuantas semillas germinaron?----------
 Conteo_Semillas=control %>%
   group_by(fungicida) %>%
