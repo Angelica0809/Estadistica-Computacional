@@ -1,0 +1,96 @@
+---
+title: "Parcial 1: Estadística Computacional"
+author: "Angelica Sierra"
+date: "2025-02-11"
+output:
+  html_document:
+    theme: readable
+---
+
+**EJERCICIO 1.** 
+Genere un vector aleatorio de distribución de Poisson, con número de observaciones 40, y promedio de 8. Use set.seed(2025).
+
+```{r}
+set.seed(2025)
+vector=rpois(40,8)
+print(vector)
+```
+
+**A) Ordenelos de menor a mayor**
+```{r}
+Vector_Ordenado=sort(vector)
+print(Vector_Ordenado)
+```
+**B) Extraiga el octavo y veinteavo elemento del vector**
+```{r}
+Vector_Ordenado[c(8,20)]
+```
+**C) Extraiga los valores de las posiciones impares**
+```{r}
+Valores_Pos_Imp=Vector_Ordenado[seq(1, length(Vector_Ordenado), by = 2)]
+print(Valores_Pos_Imp)
+```
+**D) Extraiga los valores que son mayores que 3, pero menores que 8**
+```{r}
+Vector_Ordenado[c(Vector_Ordenado>3,Vector_Ordenado<8)]
+```
+
+
+**EJERCICIO 2.**
+Un cliente busca información sobre conjuntos de datos relacionados con experimentos quımicos. Recuerda que sus nombres son:esoph y  trees. El cliente necesita que usted realice lo siguiente:
+
+**A) Indique en qué paquete se encuentran estos conjuntos**
+
+```{r}
+?esoph 
+data(esoph)
+str(esoph)
+```
+El paquete **esoph** (Smoking, Alcohol and (O)esophageal Cancer): Registra datos relacionados a Tabaquismo, alcohol y cáncer de esófago, especificamente contiene datos de un estudio de casos sobre el cáncer de esófago  y el control de estos.  El conjunto de datos esoph (Esophageal Cancer) forma parte del paquete datasets en R. Los datos al parecer fueron recolectados con el fin de establecer  la relación entre el consumo de alcohol y tabaco con la incidencia de cáncer de esófago.El conjunto de datos contiene 88 observaciones agrupadas en función de los niveles de exposición a alcohol y tabaco
+
+```{r}
+?trees
+data(trees)
+str(trees)
+```
+El paquete **'trees'** (Diameter, Height and Volume for Black Cherry Trees): Registra datos relacionados al Diámetro, altura y volumen de cerezos negros.El conjunto de datos trees, disponible en el paquete base de R (datasets), contiene información sobre las dimensiones de 31 árboles. 
+
+**B) Proporcione una descripcion breve de las variables contenidas en cada conjunto.**
+
+**Variables de esoph:**
+
+- **agegp:**	Hace referencia a los Grupos de edad de los sujetos bajo estudio en intervalos de 10 años. Los rangos son de 25 a 34, de 35 a 44, de 45 a 54, de 55 a 64,de  65 a 74 y  mayores a 75.
+- **alcgp:** Hace referencia a los Grupos de consumo de alcohol (expresado en gramos por día), con las siguientes categorías: de 0 a 39g, de 40 a 79g, de 80 a 119g" y mas de 120g.
+- **tobgp:**Hace referencia a los Grupos de consumo de tabaco (expresado en gramos por día), dividido en consumo entre 0 y 9g", de  10 a 19g, de 20 a 29g y mas de 30g.
+- **ncases:**	Hace referencia al número de casos de cáncer de esófago en cada grupo de edad y nivel de exposición.
+- **ncontrols:**	Hace referencia a el número de individuos sanos (grupo control) en cada combinación de edad, consumo de alcohol y tabaco.
+
+
+**Variables de `trees`:**  
+
+- **Girth:** Hace referencia al perímetro del tronco medido, expresado en pulgadas.  
+- **Height:** Hace referencia a la altura total del árbol, expresada en pies.  
+- **Volume:** Hace referencia al volumen del árbol, estimado en pies cúbicos.  
+
+**C)Realice una caracterización de la variable Volume segun Height (convertida en categorías por cuantiles) en trees. Use el paquete dplyr de tidyverse y elimine los valores NA (si lo hay)**
+```{r}
+library(tidyverse)
+library(dplyr)
+cuantil= quantile(trees$Height, q= c(0, 0.25, 0.50, 0.75, 1), na.rm = TRUE)
+trees %>% 
+  mutate(Height_Categorizada=case_when(
+  Height<=cuantil[2] ~ "Bajo",
+  Height<=cuantil[3] ~ "Mediano",
+  Height<=cuantil[4] ~ "Alto",
+  TRUE~ "Altisimo"
+)) %>% group_by(Height_Categorizada) %>% 
+  summarise(
+    vol_max = max(Volume, na.rm = TRUE),
+    vol_prom = mean(Volume, na.rm = TRUE),
+    vol_min = min(Volume, na.rm = TRUE),
+    sd_vol=sd(Volume, na.rm = TRUE)
+    
+  )
+```
+Se observa que los árboles más altos ("Altísimo" y "Alto") tienen los mayores volúmenes promedio (41.11 y 39.55), mientras que los más bajos presentan menores valores (Bajo: 19.22, Mediano: 22.58). Adicionalmnete la tabla sugiere que la relación entre altura y volumen no es homogénea, ya que se obtuvo una mayor variabilidad en árboles altos,indicando mayor variabilidad en su volumen, mientras que los más bajos presentan una menor dispersión. 
+
