@@ -413,15 +413,11 @@ str(esoph)</code></pre>
 ##  $ tobgp    : Ord.factor w/ 4 levels &quot;0-9g/day&quot;&lt;&quot;10-19&quot;&lt;..: 1 2 3 4 1 2 3 4 1 2 ...
 ##  $ ncases   : num  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ ncontrols: num  40 10 6 5 27 7 4 7 2 1 ...</code></pre>
+<pre class="r"><code>View(esoph)</code></pre>
 <p>El paquete <strong>esoph</strong> (Smoking, Alcohol and (O)esophageal
 Cancer): Registra datos relacionados a Tabaquismo, alcohol y cáncer de
 esófago, especificamente contiene datos de un estudio de casos sobre el
-cáncer de esófago y el control de estos. El conjunto de datos esoph
-(Esophageal Cancer) forma parte del paquete datasets en R. Los datos al
-parecer fueron recolectados con el fin de establecer la relación entre
-el consumo de alcohol y tabaco con la incidencia de cáncer de esófago.El
-conjunto de datos contiene 88 observaciones agrupadas en función de los
-niveles de exposición a alcohol y tabaco</p>
+cáncer de esófago y el control de estos.</p>
 <pre class="r"><code>?trees
 data(trees)
 str(trees)</code></pre>
@@ -429,41 +425,21 @@ str(trees)</code></pre>
 ##  $ Girth : num  8.3 8.6 8.8 10.5 10.7 10.8 11 11 11.1 11.2 ...
 ##  $ Height: num  70 65 63 72 81 83 66 75 80 75 ...
 ##  $ Volume: num  10.3 10.3 10.2 16.4 18.8 19.7 15.6 18.2 22.6 19.9 ...</code></pre>
+<pre class="r"><code>View(trees)</code></pre>
 <p>El paquete <strong>‘trees’</strong> (Diameter, Height and Volume for
 Black Cherry Trees): Registra datos relacionados al Diámetro, altura y
-volumen de cerezos negros.El conjunto de datos trees, disponible en el
-paquete base de R (datasets), contiene información sobre las dimensiones
-de 31 árboles.</p>
+volumen de cerezos negros.</p>
+<p>Cabe aclarar que ambos conjuntos de datos se encuentran en el paquete
+datasets de R.</p>
 <p><strong>B) Proporcione una descripcion breve de las variables
 contenidas en cada conjunto.</strong></p>
-<p><strong>Variables de esoph:</strong></p>
-<ul>
-<li><strong>agegp:</strong> Hace referencia a los Grupos de edad de los
-sujetos bajo estudio en intervalos de 10 años. Los rangos son de 25 a
-34, de 35 a 44, de 45 a 54, de 55 a 64,de 65 a 74 y mayores a 75.</li>
-<li><strong>alcgp:</strong> Hace referencia a los Grupos de consumo de
-alcohol (expresado en gramos por día), con las siguientes categorías: de
-0 a 39g, de 40 a 79g, de 80 a 119g” y mas de 120g.</li>
-<li><strong>tobgp:</strong>Hace referencia a los Grupos de consumo de
-tabaco (expresado en gramos por día), dividido en consumo entre 0 y 9g”,
-de 10 a 19g, de 20 a 29g y mas de 30g.</li>
-<li><strong>ncases:</strong> Hace referencia al número de casos de
-cáncer de esófago en cada grupo de edad y nivel de exposición.</li>
-<li><strong>ncontrols:</strong> Hace referencia a el número de
-individuos sanos (grupo control) en cada combinación de edad, consumo de
-alcohol y tabaco.</li>
-</ul>
-<p><strong>Variables de <code>trees</code>:</strong></p>
-<ul>
-<li><strong>Girth:</strong> Hace referencia al perímetro del tronco
-medido, expresado en pulgadas.<br />
-</li>
-<li><strong>Height:</strong> Hace referencia a la altura total del
-árbol, expresada en pies.<br />
-</li>
-<li><strong>Volume:</strong> Hace referencia al volumen del árbol,
-estimado en pies cúbicos.</li>
-</ul>
+<p><strong>Variables de esoph</strong> -<strong>Girth (Circunferencia o
+Perímetro):</strong> Variable numérica que representa el diámetro del
+árbol en pulgadas (en realidad, se refiere al diámetro en lugar de la
+circunferencia). -<strong>Height (Altura):* Variable numérica que indica
+la altura del árbol en pies. -</strong>Volume (Volumen):* Variable
+numérica que mide el volumen de madera en pies cúbicos.</p>
+<p><strong>Variables de esoph</strong></p>
 <p><strong>C)Realice una caracterización de la variable Volume segun
 Height (convertida en categorías por cuantiles) en trees. Use el paquete
 dplyr de tidyverse y elimine los valores NA (si lo hay)</strong></p>
@@ -509,6 +485,217 @@ la tabla sugiere que la relación entre altura y volumen no es homogénea,
 ya que se obtuvo una mayor variabilidad en árboles altos,indicando mayor
 variabilidad en su volumen, mientras que los más bajos presentan una
 menor dispersión.</p>
+<p><strong>EJERCICIO 3.</strong> Se define una variable rquote &lt;-
+“r’s internals are irrefutably intriguing”. Esta variable se ha dividido
+en un vector que contiene letras separadas y se ha almacenado en un
+vector chars con la función strsplit(). ¿Puedes escribir un código que
+cuente el número de r’s que vienen antes de la primera u en rquote?</p>
+<pre class="r"><code>rquote=&quot;r’s internals are irrefutably intriguing&quot;
+chars=strsplit(rquote, split=&quot;&quot;)[[1]]
+Num_r=0
+for (i in 1:length(chars)) {
+  if (chars[i] == &quot;u&quot;) {
+    break  
+  }
+  if (chars[i] == &quot;r&quot;) {
+    Num_r &lt;- Num_r + 1  
+  }
+}
+
+print(paste(&quot;El número de &#39;r&#39; antes de encontrar la primera &#39;u&#39; es:&quot;, Num_r))</code></pre>
+<pre><code>## [1] &quot;El número de &#39;r&#39; antes de encontrar la primera &#39;u&#39; es: 5&quot;</code></pre>
+<p><strong>EJERCICIO 4.</strong> Suponga que se extraen números
+aleatorios entre 1 y 100. Realice un script que simule extracciones
+hasta queaparezca un número mayor a 90, exactamente 3 veces. Debe
+mostrar el historial de numeros extraídos.</p>
+<pre class="r"><code>extraccion=0
+numero_mayor_90=0
+historial=c()
+while(numero_mayor_90&lt;3){
+  numero=sample(1:100,1)
+  extraccion=extraccion+1
+  historial=c(historial,numero)
+  if(numero&gt;90){
+    numero_mayor_90=numero_mayor_90+1
+  }
+}
+print(historial)</code></pre>
+<pre><code>##  [1] 57 49 46 68 24 20 90 77 11 51 41 27 16 86 48 82 17 81 25 38 56 48  4 24  5
+## [26] 98 29 69 80 41 54 24 87 15 52 12 85  3 44  8  8 23  8  2 98 26 13 16 49 47
+## [51] 68 14 59 12 84 96</code></pre>
+<pre class="r"><code>print(paste(&quot;El total de extracciones fue:&quot;,extraccion))</code></pre>
+<pre><code>## [1] &quot;El total de extracciones fue: 56&quot;</code></pre>
+<p><strong>EJERCICIO 5.</strong> Escriba una función (llámela r i c) que
+imprima el rango intercuartílico de una variable aleatoria con
+distribución beta de longitud 40 y parámetro beta igual a 5. Debe
+calcular el rango intercuartílico desde su definición, sin usar la
+función quantile dentro del cuerpo de la función. Dentro de la función,
+debe utilizar paste en su programa.</p>
+<p>El rango intercuartílico Se define como la diferencia entre el tercer
+cuartil (Q3) y el primer cuartil (Q1), es decir: RQ = Q3 - Q1. Por
+tanto, acontinuación vamos se desarrollo un codigo que facilita dicho
+cálculo.</p>
+<pre class="r"><code>RIC=function(){
+  x=rbeta(40,shape1 = 1, shape2 = 5)
+  sort(x)
+  Q1=x[round(0.25*length(x))]
+  Q3=x[round(0.75*length(x))]
+  ric=Q3-Q1
+  print(paste(&quot;El Rango Intercualitico es:&quot;,ric))
+}
+RIC()</code></pre>
+<pre><code>## [1] &quot;El Rango Intercualitico es: -0.378871848357113&quot;</code></pre>
+<p>En el enunciado del ejercicio, se entrega el parametro de beta
+solamente, por lo que se asume ALPHA como 1 para el desarrollo de este
+ejercicio.</p>
+<p><strong>EJERCICIO 6.</strong> El conjunto de datos llamado
+germination, que se encuentra en la carpeta de datos de Teams, se
+refiere a la germinación de semillas de dos genotipos de la planta
+parásita Orobanche (a75 = hiedra y a73 = trébol) y dos extractos de
+plantas residentes (frijol y pepino) que se utilizaron para estimular la
+germinación. La variable conteo es el número de semillas que germinaron
+de un lote muestral.</p>
+<p><strong>A) Cargue los datos germination y muestre las 3 primeras
+filas</strong></p>
+<pre class="r"><code>setwd(&quot;C:/Users/Angelica Elena/Documents/GitHub/Estadistica-Computacional/Parcial&quot;)
+datos=read.delim(&quot;germinacion.txt&quot;,sep=&quot;&quot;,stringsAsFactors = FALSE)
+str(datos)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    21 obs. of  4 variables:
+##  $ conteo   : int  10 23 23 26 17 5 53 55 32 46 ...
+##  $ muestra  : int  39 62 81 51 39 6 74 72 51 79 ...
+##  $ orobanche: chr  &quot;a75&quot; &quot;a75&quot; &quot;a75&quot; &quot;a75&quot; ...
+##  $ extracto : chr  &quot;frijol&quot; &quot;frijol&quot; &quot;frijol&quot; &quot;frijol&quot; ...</code></pre>
+<pre class="r"><code>summary(datos)</code></pre>
+<pre><code>##      conteo         muestra       orobanche           extracto        
+##  Min.   : 0.00   Min.   : 4.00   Length:21          Length:21         
+##  1st Qu.: 8.00   1st Qu.:16.00   Class :character   Class :character  
+##  Median :17.00   Median :39.00   Mode  :character   Mode  :character  
+##  Mean   :20.19   Mean   :39.57                                        
+##  3rd Qu.:26.00   3rd Qu.:51.00                                        
+##  Max.   :55.00   Max.   :81.00</code></pre>
+<pre class="r"><code>head(datos,3)</code></pre>
+<pre><code>##   conteo muestra orobanche extracto
+## 1     10      39       a75   frijol
+## 2     23      62       a75   frijol
+## 3     23      81       a75   frijol</code></pre>
+<pre class="r"><code>print(datos)</code></pre>
+<pre><code>##    conteo muestra orobanche extracto
+## 1      10      39       a75   frijol
+## 2      23      62       a75   frijol
+## 3      23      81       a75   frijol
+## 4      26      51       a75   frijol
+## 5      17      39       a75   frijol
+## 6       5       6       a75   pepino
+## 7      53      74       a75   pepino
+## 8      55      72       a75   pepino
+## 9      32      51       a75   pepino
+## 10     46      79       a75   pepino
+## 11     10      13       a75   pepino
+## 12      8      16       a73   frijol
+## 13     10      30       a73   frijol
+## 14      8      28       a73   frijol
+## 15     23      45       a73   frijol
+## 16      0       4       a73   frijol
+## 17      3      12       a73   pepino
+## 18     22      41       a73   pepino
+## 19     15      30       a73   pepino
+## 20     32      51       a73   pepino
+## 21      3       7       a73   pepino</code></pre>
+<p><strong>B) Cambie el nombre codificado de los dos genotipos de la
+planta al nombre comÚn de éstas. Use dplyrs</strong></p>
+<pre class="r"><code>library(dplyr)
+datos =datos%&gt;% 
+  mutate(orobanche = if_else(orobanche == &quot;a73&quot;, &quot;Trebol&quot;, &quot;Hiedra&quot;))
+print(datos)</code></pre>
+<pre><code>##    conteo muestra orobanche extracto
+## 1      10      39    Hiedra   frijol
+## 2      23      62    Hiedra   frijol
+## 3      23      81    Hiedra   frijol
+## 4      26      51    Hiedra   frijol
+## 5      17      39    Hiedra   frijol
+## 6       5       6    Hiedra   pepino
+## 7      53      74    Hiedra   pepino
+## 8      55      72    Hiedra   pepino
+## 9      32      51    Hiedra   pepino
+## 10     46      79    Hiedra   pepino
+## 11     10      13    Hiedra   pepino
+## 12      8      16    Trebol   frijol
+## 13     10      30    Trebol   frijol
+## 14      8      28    Trebol   frijol
+## 15     23      45    Trebol   frijol
+## 16      0       4    Trebol   frijol
+## 17      3      12    Trebol   pepino
+## 18     22      41    Trebol   pepino
+## 19     15      30    Trebol   pepino
+## 20     32      51    Trebol   pepino
+## 21      3       7    Trebol   pepino</code></pre>
+<p><strong>C) Extraiga todas las observaciones en las que el número de
+semillas que germinaron sea distinto de 10 y muestre las 5 muestras más
+grandes</strong></p>
+<pre class="r"><code>datos_obs=datos %&gt;% 
+  filter(conteo!=10) %&gt;%
+  arrange(desc(conteo))
+head(datos_obs,5)</code></pre>
+<pre><code>##   conteo muestra orobanche extracto
+## 1     55      72    Hiedra   pepino
+## 2     53      74    Hiedra   pepino
+## 3     46      79    Hiedra   pepino
+## 4     32      51    Hiedra   pepino
+## 5     32      51    Trebol   pepino</code></pre>
+<p><strong>D)Hay diversos fungicidas biológicos que controlan la
+aparición de estas plantas parásitas con el fin de que no se pierdan las
+cosechas. Se muestran seis de ellas en la siguiente tabla:</strong></p>
+<p>orobanche = c(“a70”, “a71”, “a72”, “hiedra”, “a74”, “trebol”, “a76”)
+fungicida = c(“Ecoticid-K1”, “Ecoticid-K2”, “Ecoticid-K3”,
+“Ecoticid-K0”,“Ecoticid-K4”,“Ecoticid-K9”, “Ecoticid-K8”) tratamiento =
+data.frame(orobanche, fungicida)</p>
+<p><em>A partir de lo anterior, cree una nueva tabla llamada control en
+donde se extraigan los fungicidas relevantes de la tabla de datos
+tratamiento para el control de la planta par´asita de la tabla de datos
+original. Use left join.</em></p>
+<pre class="r"><code>orobanche=c(&quot;a70&quot;, &quot;a71&quot;, &quot;a72&quot;, &quot;Hiedra&quot;, &quot;a74&quot;, &quot;Trebol&quot;, &quot;a76&quot;)
+fungicida=c(&quot;Ecoticid-K1&quot;, &quot;Ecoticid-K2&quot;, &quot;Ecoticid-K3&quot;, &quot;Ecoticid-K0&quot;, &quot;Ecoticid-K4&quot;, &quot;Ecoticid-K9&quot;, &quot;Ecoticid-K8&quot;)
+tratamiento=data.frame(orobanche, fungicida, stringsAsFactors = FALSE)
+if (&quot;fungicida&quot; %in% names(datos)) {
+  datos=datos %&gt;% select(-fungicida)##Esto lo hago porque me estaba colocando otra columna de fungicida adicional a la que la estaba ya por defecto tal parece en la tabla.
+}
+control=datos %&gt;%
+  left_join(tratamiento, by = &quot;orobanche&quot;)
+print(control)</code></pre>
+<pre><code>##    conteo muestra orobanche extracto   fungicida
+## 1      10      39    Hiedra   frijol Ecoticid-K0
+## 2      23      62    Hiedra   frijol Ecoticid-K0
+## 3      23      81    Hiedra   frijol Ecoticid-K0
+## 4      26      51    Hiedra   frijol Ecoticid-K0
+## 5      17      39    Hiedra   frijol Ecoticid-K0
+## 6       5       6    Hiedra   pepino Ecoticid-K0
+## 7      53      74    Hiedra   pepino Ecoticid-K0
+## 8      55      72    Hiedra   pepino Ecoticid-K0
+## 9      32      51    Hiedra   pepino Ecoticid-K0
+## 10     46      79    Hiedra   pepino Ecoticid-K0
+## 11     10      13    Hiedra   pepino Ecoticid-K0
+## 12      8      16    Trebol   frijol Ecoticid-K9
+## 13     10      30    Trebol   frijol Ecoticid-K9
+## 14      8      28    Trebol   frijol Ecoticid-K9
+## 15     23      45    Trebol   frijol Ecoticid-K9
+## 16      0       4    Trebol   frijol Ecoticid-K9
+## 17      3      12    Trebol   pepino Ecoticid-K9
+## 18     22      41    Trebol   pepino Ecoticid-K9
+## 19     15      30    Trebol   pepino Ecoticid-K9
+## 20     32      51    Trebol   pepino Ecoticid-K9
+## 21      3       7    Trebol   pepino Ecoticid-K9</code></pre>
+<p><strong>E) De los datos del ítem anterior, según cada fungicida,
+¿cuntas semillas germinaron?:</strong></p>
+<pre class="r"><code>Conteo_Semillas=control %&gt;%
+  group_by(fungicida) %&gt;%
+  summarise(semillas_germinadas= sum(conteo, na.rm = TRUE)) %&gt;%
+  arrange(desc(semillas_germinadas))
+print(Conteo_Semillas)</code></pre>
+<pre><code>## # A tibble: 2 × 2
+##   fungicida   semillas_germinadas
+##   &lt;chr&gt;                     &lt;int&gt;
+## 1 Ecoticid-K0                 300
+## 2 Ecoticid-K9                 124</code></pre>
 
 
 

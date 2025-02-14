@@ -98,7 +98,7 @@ print(paste("El total de extracciones fue:",extraccion))
 #EJERCICIO 5--------------------------------------------------------------------
 ##Solo nos especifican el valor de Beta, asumiremos el valor de Alpha como 1.
 RIC=function(){
-  x=rbeta(40,5,1)
+  x=rbeta(40,1,5)
   sort(x)
   Q1=x[round(0.25*length(x))]
   Q3=x[round(0.75*length(x))]
@@ -106,3 +106,55 @@ RIC=function(){
   print(paste("El Rango Intercualitico es:",ric))
 }
 RIC()
+
+
+#EJERCICIO 6--------------------------------------------------------------------
+
+##Cargue los datos germination y muestre las 3 primeras filas-------------------
+setwd("C:/Users/Angelica Elena/Documents/GitHub/Estadistica-Computacional/Parcial")
+datos=read.delim("germinacion.txt",sep="",stringsAsFactors = FALSE)
+str(datos)
+summary(datos)
+head(datos,3)
+print(datos)
+##Cambie el nombre codificado de los dos genotipos al nombre comun de la planta----
+## Use dplyr
+library(dplyr)
+datos =datos%>% 
+  mutate(orobanche = if_else(orobanche == "a73", "Trebol", "Hiedra"))
+print(datos)
+##Extraiga todas las observaciones en las que el numero de semillas-----
+##que germinaron sea distinto de 10 y muestre las 5 muestras mas grandes. 
+datos_obs=datos %>% 
+  filter(conteo!=10) %>%
+  arrange(desc(conteo))
+head(datos_obs,5)
+
+##Tabla de  control de los fungicidas relevantes----
+
+
+orobanche=c("a70", "a71", "a72", "Hiedra", "a74", "Trebol", "a76")
+fungicida=c("Ecoticid-K1", "Ecoticid-K2", "Ecoticid-K3", "Ecoticid-K0","Ecoticid-K4", "Ecoticid-K9", "Ecoticid-K8")
+tratamiento=data.frame(orobanche, fungicida, stringsAsFactors = FALSE)
+control=datos %>%
+  left_join(tratamiento, by = "orobanche")
+print(control)
+
+##PRUEBA 2
+
+orobanche=c("a70", "a71", "a72", "Hiedra", "a74", "Trebol", "a76")
+fungicida=c("Ecoticid-K1", "Ecoticid-K2", "Ecoticid-K3", "Ecoticid-K0", "Ecoticid-K4", "Ecoticid-K9", "Ecoticid-K8")
+tratamiento=data.frame(orobanche, fungicida, stringsAsFactors = FALSE)
+if ("fungicida" %in% names(datos)) {
+  datos=datos %>% select(-fungicida)##Esto lo hago porque me estaba colocando otra columna de fungicida adicional a la que la estaba
+}
+control=datos %>%
+  left_join(tratamiento, by = "orobanche")
+print(control)
+##¿cuantas semillas germinaron?----------
+Conteo_Semillas=control %>%
+  group_by(fungicida) %>%
+  summarise(semillas_germinadas= sum(conteo, na.rm = TRUE)) %>%
+  arrange(desc(semillas_germinadas))
+print(Conteo_Semillas)
+
